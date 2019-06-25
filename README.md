@@ -1,0 +1,2 @@
+# CharBot
+Discord Bot
