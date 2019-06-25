@@ -1,0 +1,2 @@
+token = your Discord token here
+mongoURI = Your MongoDB connection String here
