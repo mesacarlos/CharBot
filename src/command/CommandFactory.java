@@ -3,7 +3,7 @@ package command;
 import java.util.HashMap;
 
 public class CommandFactory {
-	private static final String PREFIX = ".";
+	public static final String PREFIX = ".";
 
 	public static HashMap<String, TextCommand> getCommandsHashMap() {
 		HashMap<String, TextCommand> commands = new HashMap<String, TextCommand>();

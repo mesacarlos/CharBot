@@ -2,6 +2,7 @@ package main;
 
 import javax.security.auth.login.LoginException;
 
+import command.CommandFactory;
 import listener.MessageReceivedListener;
 import net.dv8tion.jda.core.AccountType;
 import net.dv8tion.jda.core.JDA;
@@ -21,7 +22,7 @@ public class CharBot {
 					.addEventListener(new MessageReceivedListener()).build();
 			jda.awaitReady();
 			System.out.println("Conectado con discord.");
-			jda.getPresence().setGame(Game.watching("Armin van Buuren #ayuda"));
+			jda.getPresence().setGame(Game.watching("Armin van Buuren " + CommandFactory.PREFIX + "ayuda"));
 		} catch (LoginException e) {
 			System.out.println(
 					"Error al conectar con discord. A continuación se mostrará más información de depuración.");
