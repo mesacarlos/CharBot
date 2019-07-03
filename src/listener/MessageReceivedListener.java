@@ -16,21 +16,10 @@ public class MessageReceivedListener extends ListenerAdapter {
 
 	@Override
 	public void onMessageReceived(MessageReceivedEvent event) {
-		try {
-			if (event.isFromType(ChannelType.PRIVATE)) 
-				onPrivateChannelMessageReceived(event);
-			else
-				onTextChannelMessageReceived(event);
-		}catch(IllegalFormatException exception) {
-			event.getTextChannel().sendMessage("Ocurrió el siguiente error: "
-				+ "`" + exception.getMessage() + "`\n"
-				+ "Revisa la sintaxis del comando e inténtalo de nuevo.")
-				.queue();
-		} catch (GeneralException exception) {
-			event.getTextChannel().sendMessage("Ocurrió el siguiente error:\n"
-				+ "`" + exception.getMessage() + "`")
-				.queue();
-		}
+		if (event.isFromType(ChannelType.PRIVATE))
+			onPrivateChannelMessageReceived(event);
+		else
+			onTextChannelMessageReceived(event);
 	}
 
 	private void onPrivateChannelMessageReceived(MessageReceivedEvent event) {
@@ -39,14 +28,28 @@ public class MessageReceivedListener extends ListenerAdapter {
 		event.getPrivateChannel().sendMessage("Lo siento, no se puede utilizar el bot a través de mensajes privados");
 	}
 
-	private void onTextChannelMessageReceived(MessageReceivedEvent event) throws IllegalFormatException, GeneralException {
+	private void onTextChannelMessageReceived(MessageReceivedEvent event) {
+		//Print message in console
 		System.out.printf("[%s][%s][%s] %s: %s\n", DateTimeUtils.getDateAsString(), event.getGuild().getName(),
 				event.getTextChannel().getName(), event.getMember().getEffectiveName(),
 				event.getMessage().getContentDisplay());
-
+		
+		//Received command as string
 		String receivedCommand = event.getMessage().getContentRaw().split(" ")[0];
+		
+		//Get and execute command
 		TextCommand cmd = commands.get(receivedCommand);
-		if (cmd != null)
-			cmd.run(event);
+		if (cmd != null) {
+			try {
+				cmd.run(event);
+			} catch (IllegalFormatException exception) {
+				event.getTextChannel().sendMessage("Ocurrió el siguiente error: " + "`" + exception.getMessage() + "`\n"
+						+ "Revisa la sintaxis del comando e inténtalo de nuevo.").queue();
+			} catch (GeneralException exception) {
+				event.getTextChannel().sendMessage("Ocurrió el siguiente error:\n" + "`" + exception.getMessage() + "`")
+						.queue();
+			}
+		}//endif
+		
 	}
 }

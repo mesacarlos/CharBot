@@ -1,6 +1,5 @@
 package database.service;
 
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ import database.mongodb.MongoDB;
 
 public class FrasesMiticasLoad {
 	@SuppressWarnings("deprecation")
-	public static List<FraseMitica> loadFrasesMiticas(long groupId) throws UnknownHostException {
+	public static List<FraseMitica> loadFrasesMiticas(long groupId) {
 		MongoCollection<Document> collection = MongoDB.getInstance().getCollection("FrasesMiticas");
 
 		List<FraseMitica> lista = new ArrayList<FraseMitica>();

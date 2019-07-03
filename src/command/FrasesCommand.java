@@ -1,24 +1,19 @@
 package command;
 
-import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
 
 import database.model.FraseMitica;
 import database.service.FrasesMiticasLoad;
-import exception.GeneralException;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class FrasesCommand implements TextCommand {
 
 	@Override
-	public void run(MessageReceivedEvent e) throws GeneralException {
+	public void run(MessageReceivedEvent e) {
 		List<FraseMitica> fms;
-		try {
-			fms = FrasesMiticasLoad.loadFrasesMiticas(e.getGuild().getIdLong());
-		} catch (UnknownHostException e1) {
-			throw new GeneralException("Error al conectar con la base de datos.");
-		}
+		
+		fms = FrasesMiticasLoad.loadFrasesMiticas(e.getGuild().getIdLong());
 		
 		//Union de mensajes
 		List<StringBuilder> builders = new ArrayList<StringBuilder>();
