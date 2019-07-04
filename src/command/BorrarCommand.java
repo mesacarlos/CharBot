@@ -1,10 +1,11 @@
 package command;
 
+import java.util.List;
+
 import exception.GeneralException;
 import exception.IllegalFormatException;
 import net.dv8tion.jda.core.Permission;
 import net.dv8tion.jda.core.entities.Message;
-import net.dv8tion.jda.core.entities.MessageHistory;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 
 public class BorrarCommand implements TextCommand{
@@ -19,15 +20,19 @@ public class BorrarCommand implements TextCommand{
 		Message msg = e.getMessage();
 		int limit = 0;
 		try {
+			//Get number of messages to delete (No more than 50 messages can be deleted in a single command call)
 			limit = Integer.parseInt(msg.getContentRaw().split("\\s+")[1]);
-			MessageHistory history = e.getTextChannel().getHistoryBefore(msg.getId(), limit).complete();
+			if(limit > 50)
+				throw new GeneralException("No puedes borrar mas de 50 mensajes al mismo tiempo.");
 			
-			//Borramos el mensaje del usuario y el disparador del comando
+			//Retrieve messages
+			List<Message> messagesToDelete = e.getTextChannel()
+					.getHistoryBefore(msg.getId(), limit).complete()
+					.getRetrievedHistory();
+			
+			//Delete those messages
 			msg.delete().queue();
-			for(Message message : history.getRetrievedHistory()) {
-				System.out.println("Deleting: " + message);
-				message.delete().queue();
-			}
+			e.getTextChannel().purgeMessages(messagesToDelete);
 		}catch(NumberFormatException exc) {
 			throw new IllegalFormatException("No se esperaba esa expresión");
 		}
