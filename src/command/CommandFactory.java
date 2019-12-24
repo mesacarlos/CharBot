@@ -7,12 +7,12 @@ public class CommandFactory {
 
 	public static HashMap<String, TextCommand> getCommandsHashMap() {
 		HashMap<String, TextCommand> commands = new HashMap<String, TextCommand>();
-		// Miscel�neas
+		// Miscelaneas
 		commands.put(PREFIX + "ayuda", new AyudaCommand());
 		commands.put(PREFIX + "status", new StatusCommand());
 		commands.put(PREFIX + "borrar", new BorrarCommand());
 
-		// Frases c�lebres
+		// Frases célebres
 		commands.put(PREFIX + "frases", new FrasesCommand());
 		commands.put(PREFIX + "añadirfrase", new AñadirFraseCommand());
 		return commands;

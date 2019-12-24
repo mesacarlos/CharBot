@@ -19,7 +19,7 @@ public class FrasesCommand implements TextCommand {
 		List<StringBuilder> builders = new ArrayList<StringBuilder>();
 		builders.add(new StringBuilder());
 		for(FraseMitica frase : fms) {
-			//Añadir frase
+			//AÃ±adir frase
 			builders.get(builders.size()-1).append(frase.getFrase() + "\n");
 			
 			//Si ya hay mas de 1800 caracteres, creamos el siguiente StringBuilder
@@ -29,7 +29,7 @@ public class FrasesCommand implements TextCommand {
 		
 		//Envio de mensaje
 		if(fms.isEmpty()) {
-			e.getTextChannel().sendMessage("No hay frases célebres en este servidor.").queue();
+			e.getTextChannel().sendMessage("No hay frases cÃ©lebres en este servidor.").queue();
 		}else {
 			for(StringBuilder sb : builders)
 				e.getTextChannel().sendMessage(sb.toString()).queue();

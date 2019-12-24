@@ -12,7 +12,7 @@ public class BorrarCommand implements TextCommand{
 
 	@Override
 	public void run(MessageReceivedEvent e) throws IllegalFormatException, GeneralException {
-		//Si el usuario no tiene permisos de administración de mensajes no podrá usar el comando
+		//Si el usuario no tiene permisos de administracion de mensajes no podra usar el comando
 		if(!e.getMember().hasPermission(e.getTextChannel(), Permission.MESSAGE_MANAGE))
 			throw new GeneralException("El usuario no dispone del permiso necesario para borrar mensajes");
 		
@@ -34,7 +34,7 @@ public class BorrarCommand implements TextCommand{
 			msg.delete().queue();
 			e.getTextChannel().purgeMessages(messagesToDelete);
 		}catch(NumberFormatException exc) {
-			throw new IllegalFormatException("No se esperaba esa expresión");
+			throw new IllegalFormatException("No se esperaba esa expresiÃ³n");
 		}
 	}
 

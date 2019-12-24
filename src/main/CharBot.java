@@ -14,7 +14,7 @@ public class CharBot {
 	public static final long BOOT_TIME = System.currentTimeMillis();
 
 	public static void main(String[] args) {
-		System.out.println("DISCORD BOT (c) 2017-2019 SrCharlystar. MIT License applies.");
+		System.out.println("CharBot 2017-2019 mesacarlos. MIT License applies.");
 		System.out.println("Conectando con Discord...");
 		try {
 			JDA jda = new JDABuilder(AccountType.BOT)
@@ -25,11 +25,11 @@ public class CharBot {
 			jda.getPresence().setGame(Game.watching("Armin van Buuren " + CommandFactory.PREFIX + "ayuda"));
 		} catch (LoginException e) {
 			System.out.println(
-					"Error al conectar con discord. A continuaciÛn se mostrar· m·s informaciÛn de depuraciÛn.");
+					"Error al conectar con discord. A continuaci√≥n se mostrar√° m√°s informaci√≥n de depuraci√≥n.");
 			e.printStackTrace();
 		} catch (InterruptedException e) {
-			System.out.println("Se ha podido conectar a Discord pero ocurriÛ un problema en la inicializaciÛn. "
-					+ "A continuaciÛn se mostrar· m·s informaciÛn de depuraciÛn.");
+			System.out.println("Se ha podido conectar a Discord pero ocurri√≥ un problema en la inicializaci√≥n. "
+					+ "A continuaci√≥n se mostrar√° mas informaci√≥n de depuraci√≥n.");
 			e.printStackTrace();
 		}
 	}

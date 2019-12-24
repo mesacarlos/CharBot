@@ -13,13 +13,13 @@ public class AyudaCommand implements TextCommand {
 		MessageEmbed eb = new EmbedBuilder()
 				.setTitle("Ayuda")
 				.setColor(Color.GREEN)
-				.addField("Misceláneos",
-						"**.ayuda** Muestra este diálogo\n"
+				.addField("MiscelÃ¡neos",
+						"**.ayuda** Muestra este diÃ¡logo\n"
 						+ "**.status** Muestra el estado del bot\n"
-						+ "**.borrar (num)** Borra el número de mensajes especificado", true)
-				.addField("Frases célebres",
-						"**.frases** Ver frases célebres\n"
-						+ "**.añadirfrase** Añadir frase célebre", true)
+						+ "**.borrar (num)** Borra el nÃºmero de mensajes especificado", true)
+				.addField("Frases cÃ©lebres",
+						"**.frases** Ver frases cÃ©lebres\n"
+						+ "**.aÃ±adirfrase** AÃ±adir frase cÃ©lebre", true)
 				.build();
 		e.getTextChannel().sendMessage(eb).queue();
 	}

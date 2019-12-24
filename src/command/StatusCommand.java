@@ -12,9 +12,9 @@ public class StatusCommand implements TextCommand{
 	@Override
 	public void run(MessageReceivedEvent e) {
 		MessageEmbed eb = new EmbedBuilder()
-				.setTitle("Estadísticas")
+				.setTitle("EstadÃ­sticas")
 				.setColor(Color.blue)
-				.addField("En línea", toStringDateFormat(System.currentTimeMillis()-CharBot.BOOT_TIME), true)
+				.addField("En lÃ­nea", toStringDateFormat(System.currentTimeMillis()-CharBot.BOOT_TIME), true)
 				.addField("Retardo (ms)", "" + e.getJDA().getPing(), true)
 				.build();
 		e.getTextChannel().sendMessage(eb).queue();

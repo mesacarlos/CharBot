@@ -25,7 +25,7 @@ public class MessageReceivedListener extends ListenerAdapter {
 	private void onPrivateChannelMessageReceived(MessageReceivedEvent event) {
 		System.out.printf("[%s][PM] %s: %s\n", DateTimeUtils.getDateAsString(), event.getAuthor().getName(),
 				event.getMessage().getContentDisplay());
-		event.getPrivateChannel().sendMessage("Lo siento, no se puede utilizar el bot a través de mensajes privados");
+		event.getPrivateChannel().sendMessage("Lo siento, no se puede utilizar el bot a travÃ©s de mensajes privados");
 	}
 
 	private void onTextChannelMessageReceived(MessageReceivedEvent event) {
@@ -43,10 +43,10 @@ public class MessageReceivedListener extends ListenerAdapter {
 			try {
 				cmd.run(event);
 			} catch (IllegalFormatException exception) {
-				event.getTextChannel().sendMessage("Ocurrió el siguiente error: " + "`" + exception.getMessage() + "`\n"
-						+ "Revisa la sintaxis del comando e inténtalo de nuevo.").queue();
+				event.getTextChannel().sendMessage("OcurriÃ³ el siguiente error: " + "`" + exception.getMessage() + "`\n"
+						+ "Revisa la sintaxis del comando e intÃ©ntalo de nuevo.").queue();
 			} catch (GeneralException exception) {
-				event.getTextChannel().sendMessage("Ocurrió el siguiente error:\n" + "`" + exception.getMessage() + "`")
+				event.getTextChannel().sendMessage("OcurriÃ³ el siguiente error:\n" + "`" + exception.getMessage() + "`")
 						.queue();
 			}
 		}//endif
