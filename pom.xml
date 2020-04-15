@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>CharBot</groupId>
 	<artifactId>CharBot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>CharBot</name>
 	<description>A Java Discord Bot</description>
 	<build>
@@ -29,12 +29,27 @@
 					</execution>
 				</executions>
 				<configuration>
+					<archive>
+	                	<manifest>
+	                    	<mainClass>
+	                        	main.CharBot
+	                    	</mainClass>
+	                	</manifest>
+	                </archive>
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
 				</configuration>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
 	</build>
 	<repositories>
 		<repository>

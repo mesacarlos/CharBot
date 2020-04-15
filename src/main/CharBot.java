@@ -14,7 +14,7 @@ public class CharBot {
 	public static final long BOOT_TIME = System.currentTimeMillis();
 
 	public static void main(String[] args) {
-		System.out.println("CharBot 2017-2019 mesacarlos. MIT License applies.");
+		System.out.println("CharBot 2017-2020 mesacarlos. MIT License applies.");
 		System.out.println("Conectando con Discord...");
 		try {
 			JDA jda = new JDABuilder(AccountType.BOT)

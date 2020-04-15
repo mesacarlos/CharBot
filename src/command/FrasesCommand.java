@@ -12,19 +12,20 @@ public class FrasesCommand implements TextCommand {
 	@Override
 	public void run(MessageReceivedEvent e) {
 		List<FraseMitica> fms;
-		
 		fms = FrasesMiticasLoad.loadFrasesMiticas(e.getGuild().getIdLong());
 		
-		//Union de mensajes
 		List<StringBuilder> builders = new ArrayList<StringBuilder>();
 		builders.add(new StringBuilder());
+		
+		//hacer que si la proxima frase supera los 2k añadir un nuevo stringbuilder
 		for(FraseMitica frase : fms) {
-			//Añadir frase
-			builders.get(builders.size()-1).append(frase.getFrase() + "\n");
-			
-			//Si ya hay mas de 1800 caracteres, creamos el siguiente StringBuilder
-			if(builders.get(builders.size()-1).length() > 1800)
+			StringBuilder lastStringBuilder = builders.get(builders.size()-1);
+			if(lastStringBuilder.length() + frase.getFrase().length() >= 1950) {
 				builders.add(new StringBuilder());
+				lastStringBuilder = builders.get(builders.size()-1);
+			}
+			
+			lastStringBuilder.append(frase.getFrase() + "\n");
 		}
 		
 		//Envio de mensaje
