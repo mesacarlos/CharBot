@@ -5,7 +5,7 @@ import java.util.List;
 
 import database.model.FraseMitica;
 import database.service.FrasesMiticasLoad;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class FrasesCommand implements TextCommand {
 

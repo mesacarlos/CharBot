@@ -3,9 +3,9 @@ package command;
 import java.awt.Color;
 
 import main.CharBot;
-import net.dv8tion.jda.core.EmbedBuilder;
-import net.dv8tion.jda.core.entities.MessageEmbed;
-import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
+import net.dv8tion.jda.api.EmbedBuilder;
+import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class StatusCommand implements TextCommand{
 
@@ -15,7 +15,7 @@ public class StatusCommand implements TextCommand{
 				.setTitle("Estadísticas")
 				.setColor(Color.blue)
 				.addField("En línea", toStringDateFormat(System.currentTimeMillis()-CharBot.BOOT_TIME), true)
-				.addField("Retardo (ms)", "" + e.getJDA().getPing(), true)
+				.addField("Retardo (ms)", "" + e.getJDA().getGatewayPing(), true)
 				.build();
 		e.getTextChannel().sendMessage(eb).queue();
 	}

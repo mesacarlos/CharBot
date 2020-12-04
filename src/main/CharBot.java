@@ -4,10 +4,9 @@ import javax.security.auth.login.LoginException;
 
 import command.CommandFactory;
 import listener.MessageReceivedListener;
-import net.dv8tion.jda.core.AccountType;
-import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.JDABuilder;
-import net.dv8tion.jda.core.entities.Game;
+import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.Activity;
 import util.PropertiesReader;
 
 public class CharBot {
@@ -17,12 +16,11 @@ public class CharBot {
 		System.out.println("CharBot 2017-2020 mesacarlos. MIT License applies.");
 		System.out.println("Conectando con Discord...");
 		try {
-			JDA jda = new JDABuilder(AccountType.BOT)
-					.setToken(new PropertiesReader().getProperty("token"))
-					.addEventListener(new MessageReceivedListener()).build();
+			JDA jda = JDABuilder.createDefault(new PropertiesReader().getProperty("token"))
+					.addEventListeners(new MessageReceivedListener()).build();
 			jda.awaitReady();
 			System.out.println("Conectado con discord.");
-			jda.getPresence().setGame(Game.watching("Armin van Buuren " + CommandFactory.PREFIX + "ayuda"));
+			jda.getPresence().setActivity(Activity.listening("Ayuda: " + CommandFactory.PREFIX + "ayuda")); //.setGame(Game.watching("Ayuda: " + CommandFactory.PREFIX + "ayuda"));
 		} catch (LoginException e) {
 			System.out.println(
 					"Error al conectar con discord. A continuación se mostrará más información de depuración.");
